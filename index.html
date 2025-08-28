@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Device Detection</title>
+</head>
+<body>
+    <p>Detecting device...</p>
+    <script type="text/javascript">
+        (function () {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Windows Phone must come first because its UA also contains "Android"
+            if (/windows phone/i.test(userAgent)) {
+                window.location.href = "https://vetpal.ie/";
+                return;
+            }
+
+            if (/android/i.test(userAgent)) {
+                window.location.href = "https://play.google.com/store/apps/details?id=ie.vetpal";
+                return;
+            }
+
+            // iOS detection from: http://stackoverflow.com/a/9039885/177710
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = "https://apps.apple.com/us/app/vetpal/id1609187690";
+                return;
+            }
+
+            window.location.href = "https://vetpal.ie/";
+        })();
+    </script>
+</body>
+</html>
